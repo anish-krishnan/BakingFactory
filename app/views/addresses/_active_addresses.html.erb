@@ -1,1 +1,3 @@
-<%= render partial: "address_list", locals: {addresses: @active_addresses, state: 'active'} %>
+<% if logged_in? && current_user.role?(:customer) %>
+  <%= render partial: "address_list", locals: {addresses: @customer_addresses, state: 'active'} %>
+<% end %>

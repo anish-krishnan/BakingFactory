@@ -7,7 +7,7 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.float :grand_total
       t.string :payment_receipt
 
-      # t.timestamps
+      t.timestamps
     end
   end
 end

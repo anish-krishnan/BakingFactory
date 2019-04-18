@@ -1,0 +1,29 @@
+<h3><%= @item.name %></h3>
+
+<p>
+  <b>Current Price</b>: <%= @item.current_price %>
+</p>
+
+<p>
+  <b>Category</b>: <%= @item.category %>
+</p>
+
+<p>
+  <b>Units</b>: <%= @item.units_per_item %>
+</p>
+
+<p>
+  <b>Weight</b>: <%= @item.weight %>
+</p>
+
+<p>
+  <b>Active</b>: <%= @item.active ? 'Yes' : 'No' %>
+</p>
+
+<p>
+  <b>Description</b>: <%= @item.description %>
+</p>
+
+<p>
+  <em>A Baking Factory item since <%= @item.created_at.year %>.</em>
+</p>

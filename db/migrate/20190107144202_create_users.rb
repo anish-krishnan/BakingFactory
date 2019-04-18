@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :role
       t.boolean :active
 
-      # t.timestamps
+      t.timestamps
     end
   end
 end

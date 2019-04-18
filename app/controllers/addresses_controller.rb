@@ -6,6 +6,11 @@ class AddressesController < ApplicationController
   def index
     @active_addresses = Address.active.by_customer.by_recipient.paginate(:page => params[:page]).per_page(10)
     @inactive_addresses = Address.inactive.by_customer.by_recipient.paginate(:page => params[:page]).per_page(10)
+    if logged_in? && current_user.role?(:customer)
+      @customer_addresses = Address.where("customer_id = ?", current_user.customer.id).paginate(:page => params[:page]).per_page(10)
+    else
+      @customer_addresses = nil
+    end
   end
 
   def show

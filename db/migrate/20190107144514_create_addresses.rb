@@ -11,7 +11,7 @@ class CreateAddresses < ActiveRecord::Migration[5.1]
       t.string :zip
       t.boolean :active
 
-      # t.timestamps
+      t.timestamps
     end
   end
 end

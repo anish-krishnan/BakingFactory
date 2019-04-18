@@ -4,11 +4,12 @@ class CreateItems < ActiveRecord::Migration[5.1]
       t.string :name
       t.text :description
       t.string :category
+      t.string :picture
       t.integer :units_per_item
       t.float :weight
       t.boolean :active
 
-      # t.timestamps
+      t.timestamps
     end
   end
 end

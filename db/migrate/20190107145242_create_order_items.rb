@@ -6,7 +6,7 @@ class CreateOrderItems < ActiveRecord::Migration[5.1]
       t.integer :quantity
       t.date :shipped_on
 
-      # t.timestamps
+      t.timestamps
     end
   end
 end

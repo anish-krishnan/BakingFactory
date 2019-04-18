@@ -6,7 +6,7 @@ class CreateItemPrices < ActiveRecord::Migration[5.1]
       t.date :start_date
       t.date :end_date
 
-      # t.timestamps
+      t.timestamps
     end
   end
 end

@@ -14,14 +14,14 @@ class Ability
             can :read, Item
             
             can :show, Order do |o|
-                o.customer_id == user.id
+                o.customer_id == user.customer.id
             end
 
             can :show, Customer do |c|
-                c.id == user.id
+                c.id == user.customer.id
             end
             can :update, Customer do |c|
-                c.id == user.id
+                c.id == user.customer.id
             end
 
             can :show, User do |u|
@@ -32,6 +32,7 @@ class Ability
             end
 
             can :index, Order
+
             can :create, Order
             can :checkout, Order
             can :add_to_cart, Order
@@ -39,10 +40,10 @@ class Ability
             can :create, Address
             
             can :show, Address do |a|
-                a.customer_id == user.id
+                a.customer_id == user.customer.id
             end
             can :update, Address do |a|
-                a.customer_id == user.id
+                a.customer_id == user.customer.id
             end
 
             can :index, Address
@@ -66,6 +67,6 @@ class Ability
             can :index, Item
             can :create, Customer
         end
-        
+
     end
 end

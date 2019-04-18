@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20190107145242) do
     t.string "state"
     t.string "zip"
     t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_addresses_on_customer_id"
   end
 
@@ -32,6 +34,8 @@ ActiveRecord::Schema.define(version: 20190107145242) do
     t.string "phone"
     t.integer "user_id"
     t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
@@ -40,6 +44,8 @@ ActiveRecord::Schema.define(version: 20190107145242) do
     t.float "price"
     t.date "start_date"
     t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_item_prices_on_item_id"
   end
 
@@ -47,9 +53,12 @@ ActiveRecord::Schema.define(version: 20190107145242) do
     t.string "name"
     t.text "description"
     t.string "category"
+    t.string "picture"
     t.integer "units_per_item"
     t.float "weight"
     t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -57,6 +66,8 @@ ActiveRecord::Schema.define(version: 20190107145242) do
     t.integer "item_id"
     t.integer "quantity"
     t.date "shipped_on"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_order_items_on_item_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
   end
@@ -67,6 +78,8 @@ ActiveRecord::Schema.define(version: 20190107145242) do
     t.date "date"
     t.float "grand_total"
     t.string "payment_receipt"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["address_id"], name: "index_orders_on_address_id"
     t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
@@ -76,6 +89,8 @@ ActiveRecord::Schema.define(version: 20190107145242) do
     t.string "password_digest"
     t.string "role"
     t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

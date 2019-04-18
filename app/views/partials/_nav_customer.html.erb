@@ -1,7 +1,8 @@
 <nav id="nav">
   <div class="container">
     <ul class="left hide-on-med-and-down">
-      <li><%= link_to 'Customers', customers_path %></li>
+      <li><%= link_to "My Info", customer_path(current_user.customer) %></li>
+      <li><%= link_to 'Addresses', addresses_path %></li>
       <li><%= link_to 'Items', items_path %></li>
     </ul>
     <ul class="right">
