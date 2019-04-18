@@ -1,0 +1,7 @@
+    <%= f.input :name, input_html: {class: "avg"} %>
+    <%= f.input :description, input_html: {class: "avg"} %>
+    <%= f.input :picture, input_html: {class: "avg"} %>
+    <%= f.input :category, collection: Item::CATEGORIES, include_blank: true, input_html: {class: "avg"} %>
+    <%= f.input :units_per_item, input_html: {class: "avg"} %>
+    <%= f.input :weight, input_html: {class: "avg"} %>
+    <%= f.input :active %>
