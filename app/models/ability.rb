@@ -12,6 +12,8 @@ class Ability
 
         elsif user.role? :customer
             can :read, Item
+            can :addToCart, Item
+            can :deleteFromCart, Item
             
             can :show, Order do |o|
                 o.customer_id == user.customer.id

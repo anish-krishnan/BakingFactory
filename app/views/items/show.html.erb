@@ -1,8 +1,16 @@
+<!--
 <div class="row">
   <div class="small-7 columns">
-    <%= render partial: "item_details" %>
+    <%# render partial: "item_details" %>
   </div>
 </div>
+-->
+<%= render partial: "partials/structure1", locals: {model_name: "item", 
+                                                         object: @item,
+                                                         primary: "item_details", 
+                                                         secondary: nil,
+                                                         sidebar: "cost_history"} %>
 
 <!-- Add buttons to list all, edit project or destroy object -->
-<%= render partial: "partials/object_options", locals: {model_name: "item", object: @item}  %>
+<%= render partial: "partials/object_options", locals: {model_name: "item", object: @item, sidebar: "cost_history"}  %>
+

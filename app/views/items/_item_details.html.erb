@@ -24,8 +24,20 @@
   <b>Description</b>: <%= @item.description %>
 </p>
 
-<img src=<%= @item.picture %>>
+<img src=<%= @item.picture %> style="width:400px">
 
 <p>
   <em>A Baking Factory item since <%= @item.created_at.year %>.</em>
 </p>
+
+
+
+<!-- Add a button for new instances of object -->
+
+
+
+
+
+<%= link_to(eval("addToCart_Item_path(#{@item.id})"), class: 'waves-effect waves-light btn') do %>
+    &nbsp;<%= "Add To Cart" %>
+<% end %>

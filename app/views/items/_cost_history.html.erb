@@ -1,0 +1,32 @@
+<% unless @previous_prices.nil? or @previous_prices.empty? %>
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">Cost History</span>
+      <table class="striped highlight">
+      <thead>
+        <th>Date</th>
+        <th class="align_right">Cost Per Unit</th>
+      </thead>
+        <% for price in @previous_prices %>
+          <tr>
+            <td><%= price.start_date.strftime("%b %d, %Y") %></td>
+            <td class="align_right"><%= number_to_currency(price.price/100.0) %></td>
+          </tr>
+        <% end %>
+    </table>
+    </div>
+    <% if can? :new, ItemPrice %>
+      <div class="card-action">
+        <%= link_to "Add a new cost", new_item_price_path(item_id: @item.id) %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <% if can? :new, ItemPrice %>
+    <div class="card grey lighten-3">
+      <div class="card-action">
+        <%= link_to "Add a new cost", new_item_price_path(item_id: @item.id) %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

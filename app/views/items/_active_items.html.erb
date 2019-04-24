@@ -8,6 +8,7 @@
         <th width="225">Name</th>
         <th width="125">Price</th>
         <th width="200">Units</th>
+        <th width="200">Picture</th>
       </tr>
     </thead>
     <tbody>
@@ -16,6 +17,7 @@
           <td><%= link_to item.name, item_path(item) %></td>
           <td><%= item.current_price %></td>
           <td><%= item.units_per_item  %></td>
+          <td><img src=<%= item.picture %> style="width: 200px; height: 180px"></td>
         </tr>
       <% end %>
     </tbody>
@@ -33,6 +35,7 @@
         <th width="225">Name</th>
         <th width="125">Price</th>
         <th width="200">Units</th>
+        <th width="200">Picture</th>
       </tr>
     </thead>
     <tbody>
@@ -41,6 +44,7 @@
           <td><%= link_to item.name, item_path(item) %></td>
           <td><%= item.current_price %></td>
           <td><%= item.units_per_item  %></td>
+          <td><img src=<%= item.picture %> style="width: 200px; height: 180px"></td>
         </tr>
       <% end %>
     </tbody>
@@ -58,6 +62,7 @@
         <th width="225">Name</th>
         <th width="125">Price</th>
         <th width="200">Units</th>
+        <th width="200">Picture</th>
       </tr>
     </thead>
     <tbody>
@@ -66,6 +71,7 @@
           <td><%= link_to item.name, item_path(item) %></td>
           <td><%= item.current_price %></td>
           <td><%= item.units_per_item  %></td>
+          <td><img src=<%= item.picture %> style="width: 200px; height: 180px"></td>
         </tr>
       <% end %>
     </tbody>

@@ -1,7 +1,9 @@
   class ItemsController < ApplicationController
   before_action :check_login, except: [:index, :show]
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
-  authorize_resource
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :addToCart, :deleteFromCart]
+  # authorize_resource
+
+  include AppHelpers::Cart
   
   def index
     # get info on active items for the big three...
@@ -26,6 +28,16 @@
   end
 
   def edit
+  end
+
+  def addToCart
+    add_item_to_cart(@item.id.to_s)
+    redirect_to @item, notice: "#{@item.name} was added to the cart."
+  end
+
+  def deleteFromCart
+    remove_item_from_cart(@item.id.to_s)
+    redirect_to cart_path, notice: "#{@item.name} was removed from the cart."
   end
 
   def create

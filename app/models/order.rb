@@ -3,6 +3,8 @@ class Order < ApplicationRecord
   include AppHelpers::Validations
   include AppHelpers::Deletions
   include AppHelpers::Shipping
+  include AppHelpers::Cart
+
   require 'base64'
 
   # Relationships

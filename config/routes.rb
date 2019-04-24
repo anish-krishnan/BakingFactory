@@ -5,12 +5,19 @@ Rails.application.routes.draw do
   resources :customers
   resources :orders
   resources :items
+  resources :item_prices
 
   # Semi-static page routes
   get 'home' => 'home#home', as: :home
   get 'about' => 'home#about', as: :about
   get 'contact' => 'home#contact', as: :contact
   get 'privacy' => 'home#privacy', as: :privacy
+  get 'cart' => 'home#cart', as: :cart
+
+  # post 'item/cart', :to => 'item#addToCart', as: :cart_item
+  get 'items/:id/addToCart', to: 'items#addToCart', as: :addToCart_Item
+  get 'items/:id/deleteFromCart', to: 'items#deleteFromCart', as: :deleteFromCart_Item
+
 
   # Authentication routes
   resources :sessions

@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  
+  include AppHelpers::Cart
 
   def home
   end
@@ -10,6 +12,11 @@ class HomeController < ApplicationController
   end
 
   def contact
+  end
+
+  def cart
+    @cart_items = get_list_of_items_in_cart
+
   end
 
 end
