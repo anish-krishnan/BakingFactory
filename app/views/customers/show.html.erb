@@ -9,3 +9,15 @@
 
 <!-- Add buttons to list all, edit project or destroy object -->
 <%= render partial: "partials/object_options", locals: {model_name: "customer", object: @customer}  %>
+<br>
+<% if can? :destroy, :customer %>
+  <% if @customer.active %>
+    <%= link_to(eval("deactivate_Customer_path(#{@customer.id})"), class: 'waves-effect waves-light btn btn-alert') do %>
+      &nbsp;<%= "Deactivate" %>
+    <% end %>
+  <% else %>
+    <%= link_to(eval("activate_Customer_path(#{@customer.id})"), class: 'waves-effect waves-light btn btn-alert') do %>
+      &nbsp;<%= "Activate" %>
+    <% end %>
+  <% end %>
+<% end %>

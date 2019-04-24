@@ -2,6 +2,7 @@
   <fieldset>
     <legend><%= controller.action_name.capitalize %> Address</legend>
 
+
     <%= f.input :customer_id, collection: Customer.active.alphabetical, include_blank: true, input_html: {class: "avg"} %>
 
     <%= f.input :recipient, input_html: {class: "avg"} %>

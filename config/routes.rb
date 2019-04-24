@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :orders
   resources :items
   resources :item_prices
+  resources :users
 
   # Semi-static page routes
   get 'home' => 'home#home', as: :home
@@ -17,6 +18,8 @@ Rails.application.routes.draw do
   # post 'item/cart', :to => 'item#addToCart', as: :cart_item
   get 'items/:id/addToCart', to: 'items#addToCart', as: :addToCart_Item
   get 'items/:id/deleteFromCart', to: 'items#deleteFromCart', as: :deleteFromCart_Item
+  get 'customer/:id/activate', to: 'customers#activate', as: :activate_Customer
+  get 'customer/:id/deactivate', to: 'customers#deactivate', as: :deactivate_Customer
 
 
   # Authentication routes

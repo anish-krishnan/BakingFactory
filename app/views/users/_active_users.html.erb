@@ -1,0 +1,25 @@
+<% if @users.empty? %>
+  <h4>No employees!</h4>
+<% else %>
+  <h4>Users/Employees</h4>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th width="225">Username</th>
+        <th width="125">Role</th>
+        <th width="200">Active</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.username, user_path(user) %></td>
+          <td><%= user.role %></td>
+          <td><%= user.active %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<%= will_paginate @users, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
+<% end %>
+<p>&nbsp;</p>

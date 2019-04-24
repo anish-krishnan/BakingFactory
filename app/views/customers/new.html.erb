@@ -1,3 +1,10 @@
-<%= render partial: "partials/form_structure", locals: {object: @customer, 
+<%# render partial: "partials/form_structure", locals: {object: @customer, 
                                                         type_of_form: "New Customer",
                                                         fields: "fields"} %>
+
+
+<%= render partial: "partials/form2_structure", locals: {object: @customer, 
+                                                        type_of_form: "New Customer",
+                                                        fields1: "fields",
+                                                        section_2: "User Account",
+                                                        fields2: "user_fields"} %>

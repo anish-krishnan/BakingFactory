@@ -26,6 +26,10 @@ class AddressesController < ApplicationController
   def create
     @address = Address.new(address_params)
     
+    if logged_in? && current_user.role?(:customer)
+      @address.customer_id = current_user.customer.id
+    end
+
     if @address.save
       redirect_to customer_path(@address.customer), notice: "The address was added to #{@address.customer.proper_name}."
     else

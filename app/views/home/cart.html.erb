@@ -20,7 +20,7 @@
           <td><%= oitem.quantity  %></td>
           <td><img src=<%= oitem.item.picture %> style="width: 200px; height: 180px"></td>
           <td><%= link_to(eval("deleteFromCart_Item_path(#{oitem.item.id})"), class: 'waves-effect waves-light btn') do %>
-    &nbsp;<%= "Remove" %><td>
+    &nbsp;<%= "X" %><td>
 <% end %>
         </tr>
       <% end %>

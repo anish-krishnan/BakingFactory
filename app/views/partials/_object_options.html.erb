@@ -6,7 +6,7 @@
     <% end %>
     &nbsp;&nbsp;
   
-  <% if can? :edit, model_name %>
+  <% if ((can? :edit, model_name) || (can? :edit, object)) %>
     <%= link_to(eval("edit_#{model_name}_path(object)"), class: 'waves-effect waves-light btn') do %>
         &nbsp;<%= "Edit #{opt}" %>
     <% end %>

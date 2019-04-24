@@ -8,11 +8,18 @@
     <%= f.input :email, input_html: {class: "avg"} %>
     <%= f.input :active %>
     
+    <div class="row">
+      <div class="col s12">
+        <%= render :partial => "user_fields", locals: {f: f} %>
+      </div>
+    </div>
 
 
-    <div class="form-actions">
-      <%= f.submit nil, :class => 'button radius' %>
-      <%= link_to 'Cancel', customers_path, :class => 'button alert radius' %>
+    <div class="row">
+      <div class="form-actions">
+        <%= f.submit nil, :class => 'button radius' %>
+        <%= link_to 'Cancel', customers_path, :class => 'button alert radius' %>
+      </div>
     </div>
   </fieldset>
 <% end %>

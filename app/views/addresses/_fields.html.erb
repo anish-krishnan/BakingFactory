@@ -1,4 +1,8 @@
-    <%= f.input :customer_id, collection: Customer.active.alphabetical, include_blank: true, input_html: {class: "avg"} %>
+    <%# f.input :customer_id, collection: Customer.active.alphabetical, include_blank: true, input_html: {class: "avg"} %>
+
+    <% if can? :index, :customer %>
+      <%# f.input :customer_id, collection: Customer.active.alphabetical, include_blank: true, input_html: {class: "avg"} %>
+    <% end %>
 
     <%= f.input :recipient, input_html: {class: "avg"} %>
     <%= f.input :street_1, input_html: {class: "avg"} %>
