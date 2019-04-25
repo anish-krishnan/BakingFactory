@@ -1,6 +1,15 @@
-<% if @all_orders.empty? %>
-  <p><em>There are no orders at this time.</em></p>
+<% if logged_in? && current_user.role?(:customer) %>
+  <% if @customer_orders.empty? %>
+    <p><em>There are no orders at this time.</em></p>
+  <% else %>
+    <%= render :partial => "order_list", locals: {status: 'All', orders: @customer_orders} %>  
+  <% end %>
 <% else %>
-  <%= render :partial => "order_list", locals: {status: 'All', orders: @all_orders} %>  
+  <% if @all_orders.empty? %>
+    <p><em>There are no orders at this time.</em></p>
+  <% else %>
+    <%= render :partial => "order_list", locals: {status: 'All', orders: @all_orders} %>  
+  <% end %>
 <% end %>
+
 <br />

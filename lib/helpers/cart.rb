@@ -56,9 +56,15 @@ module AppHelpers
     end
 
     def save_each_item_in_cart(order)
+      puts("STARTING SAVE PROCESS")
       session[:cart].each do |item_id, quantity|
+        puts("ITEM:")
+        puts(item_id)
+        puts(quantity)
         info = {item_id: item_id, quantity: quantity, order_id: order.id}
         OrderItem.create(info)
+        puts("CREATING ORDER ITEM")
+        puts(order.order_items)
       end
     end
   end

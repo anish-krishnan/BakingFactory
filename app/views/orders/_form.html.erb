@@ -3,7 +3,9 @@
   <fieldset>
     <legend>Place an Order with the Baking Factory</legend>
 
-    <%= f.input :customer_id, collection: Customer.active.alphabetical, include_blank: true, input_html: {class: "avg"} %>
+    <% if can? :index, :customer %>
+      <%= f.input :customer_id, collection: Customer.active.alphabetical, include_blank: true, input_html: {class: "avg"} %>
+    <% end %>
     <%= f.input :address_id, collection: get_address_options, include_blank: true, input_html: {class: "avg"} %>
     <%= f.input :grand_total, as: :string, input_html: {class: "avg"} %>
 
@@ -11,5 +13,8 @@
       <%= f.submit nil, :class => 'button radius' %>
       <%= link_to 'Cancel', orders_path, :class => 'button alert radius' %>
     </div>
+
   </fieldset>
+
+
 <% end %>

@@ -26,6 +26,14 @@
       <% end %>
     </tbody>
   </table>
+
+  <b>Subtotal</b>: $<%= @subtotal %>
+
+    <%= link_to(eval("new_order_path"), class: "button radius") do %>
+    <!-- <i class="fa fa-plus"></i> -->
+    &nbsp;Checkout
+
+  <% end %>
 <% end %>
 
 <p>&nbsp;</p>

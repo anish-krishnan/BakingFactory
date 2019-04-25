@@ -26,6 +26,11 @@
             &nbsp;Edit&nbsp;
           <% end %>
         </td>
+        <td>
+          <%= link_to(remove_address_path(address), class: 'button tiny radius warning') do %>
+            &nbsp;Remove&nbsp;
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

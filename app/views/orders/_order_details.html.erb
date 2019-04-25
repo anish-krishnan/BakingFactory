@@ -16,6 +16,26 @@
   <b>Total Cost</b>: <%= number_to_currency @order.grand_total %>
 </p>
 
+<% if !@shipped_items.empty? %>
+  <p>
+    <b>Shipped Items</b>: <br />
+  <% @shipped_items.each do |oitem| %>
+    <%= oitem.item.name %>&nbsp;(<%= oitem.quantity %>)<br />
+  <% end %>
+  </p>
+<% end %>
+
+<% if !@unshipped_items.empty? %>
+  <p>
+    <b>Unshipped Items</b>: <br />
+  <% @unshipped_items.each do |oitem| %>
+    <%= oitem.item.name %>&nbsp;(<%= oitem.quantity %>)<br />
+  <% end %>
+  </p>
+<% else %>
+<br /><b>All items were shipped!</b><br /><br />
+<% end %>
+
 
 <p>
   <em>Thanks for being a Baking Factory customer since <%= @order.customer.created_at.year %>.</em>

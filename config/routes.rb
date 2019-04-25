@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get 'items/:id/deleteFromCart', to: 'items#deleteFromCart', as: :deleteFromCart_Item
   get 'customer/:id/activate', to: 'customers#activate', as: :activate_Customer
   get 'customer/:id/deactivate', to: 'customers#deactivate', as: :deactivate_Customer
+  get 'address/:id/remove', to: 'addresses#remove', as: :remove_address
+  get 'order/checkout', to: 'orders#checkout', as: :checkout_order
 
 
   # Authentication routes

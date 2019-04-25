@@ -41,3 +41,31 @@
 <%= link_to(eval("addToCart_Item_path(#{@item.id})"), class: 'waves-effect waves-light btn') do %>
     &nbsp;<%= "Add To Cart" %>
 <% end %>
+
+<h4>Customers also love...</h4>
+
+
+<% if @similar_items.empty? %>
+  <h4>Nothing at the moment.</h4>
+<% else %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th width="225">Name</th>
+        <th width="125">Price</th>
+        <th width="200">Units</th>
+        <th width="200">Picture</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @similar_items.select{|s| s.id != @item.id}.each do |item| %>
+        <tr>
+          <td><%= link_to item.name, item_path(item) %></td>
+          <td><%= item.current_price %></td>
+          <td><%= item.units_per_item  %></td>
+          <td><img src=<%= item.picture %> style="width: 200px; height: 180px"></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

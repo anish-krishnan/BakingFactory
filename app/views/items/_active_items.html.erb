@@ -78,4 +78,17 @@
   </table>
 <%= will_paginate @pastries, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
 <% end %>
+
+    <div class="row">
+      <% @breads.each do |item| %>
+        <div class="col s3"><center>
+          <img src=<%= item.picture %> style="width: 200px; height: 180px">
+          <%= link_to item.name, item_path(item) %><br />
+          $<%= item.current_price %>
+        </div></center>
+
+      <% end %>
+    </div>
+
+
 <p>&nbsp;</p>

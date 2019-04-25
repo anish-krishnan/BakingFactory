@@ -1,5 +1,5 @@
 class AddressesController < ApplicationController
-  before_action :set_address, only: [:show, :edit, :update, :destroy]
+  before_action :set_address, only: [:show, :edit, :update, :destroy, :remove]
   before_action :check_login
   authorize_resource
 
@@ -42,6 +42,14 @@ class AddressesController < ApplicationController
       redirect_to addresses_path, notice: "The address was revised in the system."
     else
       render action: 'edit'
+    end
+  end
+
+  def remove
+    if(@address.make_inactive)
+      redirect_to addresses_path, notice: "#{@address.recipient} was deactivated."
+    else
+      redirect_to addresses_path, notice: "There must be atleast one active billing address on file!"
     end
   end
 

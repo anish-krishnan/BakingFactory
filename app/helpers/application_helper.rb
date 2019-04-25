@@ -1,5 +1,6 @@
 module ApplicationHelper
   def get_address_options(user=nil)
+    user = current_user
     if user.nil? || user.role?(:admin)
       addresses = Address.active.by_recipient.to_a
     else

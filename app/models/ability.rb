@@ -47,6 +47,9 @@ class Ability
             can :update, Address do |a|
                 a.customer_id == user.customer.id
             end
+            can :remove, Address do |a|
+                a.customer_id == user.customer.id
+            end
 
             can :index, Address
 

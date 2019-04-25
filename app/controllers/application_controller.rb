@@ -13,6 +13,11 @@ class ApplicationController < ActionController::Base
     redirect_to home_path
   end
 
+  rescue_from ActiveRecord::RecordInvalid do |exception|
+    flash[:error] = exception.to_s
+    redirect_to home_path
+  end
+
   private
   # Handling authentication
   def current_user
