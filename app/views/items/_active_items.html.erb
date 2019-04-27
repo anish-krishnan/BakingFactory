@@ -2,93 +2,54 @@
   <h4>No active breads at this time</h4>
 <% else %>
   <h4>Breads</h4>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th width="225">Name</th>
-        <th width="125">Price</th>
-        <th width="200">Units</th>
-        <th width="200">Picture</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @breads.each do |item| %>
-        <tr>
-          <td><%= link_to item.name, item_path(item) %></td>
-          <td><%= item.current_price %></td>
-          <td><%= item.units_per_item  %></td>
-          <td><img src=<%= item.picture %> style="width: 200px; height: 180px"></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<%= will_paginate @breads, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
-<% end %>
-
-<% if @muffins.empty? %>
-  <h4>No active muffins at this time</h4>
-<% else %>
-  <h4>Muffins</h4>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th width="225">Name</th>
-        <th width="125">Price</th>
-        <th width="200">Units</th>
-        <th width="200">Picture</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @muffins.each do |item| %>
-        <tr>
-          <td><%= link_to item.name, item_path(item) %></td>
-          <td><%= item.current_price %></td>
-          <td><%= item.units_per_item  %></td>
-          <td><img src=<%= item.picture %> style="width: 200px; height: 180px"></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<%= will_paginate @muffins, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
-<% end %>
-
-<% if @pastries.empty? %>
-  <h4>No active pastries at this time</h4>
-<% else %>
-  <h4>Pastries</h4>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th width="225">Name</th>
-        <th width="125">Price</th>
-        <th width="200">Units</th>
-        <th width="200">Picture</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @pastries.each do |item| %>
-        <tr>
-          <td><%= link_to item.name, item_path(item) %></td>
-          <td><%= item.current_price %></td>
-          <td><%= item.units_per_item  %></td>
-          <td><img src=<%= item.picture %> style="width: 200px; height: 180px"></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<%= will_paginate @pastries, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
-<% end %>
-
     <div class="row">
       <% @breads.each do |item| %>
         <div class="col s3"><center>
           <img src=<%= item.picture %> style="width: 200px; height: 180px">
           <%= link_to item.name, item_path(item) %><br />
           $<%= item.current_price %>
-        </div></center>
 
+          <br /><br /><br />
+        </center></div>
       <% end %>
-    </div>
+    </div>  
+<% end %>
+
+<% if @muffins.empty? %>
+  <h4>No active muffins at this time</h4>
+<% else %>
+  <h4>Muffins</h4>
+    <div class="row">
+      <% @muffins.each do |item| %>
+        <div class="col s3"><center>
+          <img src=<%= item.picture %> style="width: 200px; height: 180px">
+          <%= link_to item.name, item_path(item) %><br />
+          $<%= item.current_price %>
+
+          <br /><br /><br />
+        </center></div>
+      <% end %>
+    </div>   
+<% end %>
+
+<% if @pastries.empty? %>
+  <h4>No active pastries at this time</h4>
+<% else %>
+  <h4>Pastries</h4>
+    <div class="row">
+      <% @pastries.each do |item| %>
+        <div class="col s3"><center>
+          <img src=<%= item.picture %> style="width: 200px; height: 180px">
+          <%= link_to item.name, item_path(item) %><br />
+          $<%= item.current_price %>
+
+          <br /><br /><br />
+        </center></div>
+      <% end %>
+    </div>   
+<% end %>
+
+
 
 
 <p>&nbsp;</p>

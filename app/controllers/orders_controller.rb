@@ -71,7 +71,7 @@ class OrdersController < ApplicationController
     if(current_user.role? :customer)
       params.require(:order).permit(:address_id, :credit_card_number, :expiration_year, :expiration_month)
     else
-      params.require(:order).permit(:address_id, :customer_id, :grand_total)
+      params.require(:order).permit(:address_id, :customer_id, :grand_total, :credit_card_number, :expiration_year, :expiration_month)
     end
   end
 
