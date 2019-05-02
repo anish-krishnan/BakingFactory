@@ -7,10 +7,31 @@ class OrdersController < ApplicationController
   
   def index
     @all_orders = Order.chronological.paginate(:page => params[:page]).per_page(10)
+
     if logged_in? && current_user.role?(:customer)
       @customer_orders = Order.where("customer_id = ?", current_user.customer.id).paginate(:page => params[:page]).per_page(10)
+
+      pending_orders_ARR = @customer_orders.select{|o| o.is_editable?}
+      past_orders_ARR = @customer_orders.select{|o| !o.is_editable?}
+
+      @pending_orders = Order.where(id: pending_orders_ARR.map(&:id)).paginate(:page => params[:page]).per_page(10)
+      @past_orders = Order.where(id: past_orders_ARR.map(&:id)).paginate(:page => params[:page]).per_page(10)
+
+      puts(@customer_orders)
+      puts(@pending_orders)
+      puts(@past_orders)
+
+      @past_orders.each do |o| puts(o.customer.first_name) end
+
     else
       @customer_orders = nil
+
+
+
+      pending_orders_ARR = Order.chronological.select{|o| o.is_editable?}
+      past_orders_ARR = Order.chronological.select{|o| !o.is_editable?}
+      @pending_orders = Order.where(id: pending_orders_ARR.map(&:id)).paginate(:page => params[:page]).per_page(10)
+      @past_orders = Order.where(id: past_orders_ARR.map(&:id)).paginate(:page => params[:page]).per_page(10)
     end
   end
 

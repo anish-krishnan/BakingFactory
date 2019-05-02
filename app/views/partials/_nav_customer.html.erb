@@ -1,15 +1,15 @@
 <nav id="nav">
   <div class="container">
     <ul class="left hide-on-med-and-down">
-      <li><%= link_to "My Info", customer_path(current_user.customer) %></li>
-      <li><%= link_to 'Addresses', addresses_path %></li>
-      <li><%= link_to 'Orders', orders_path %></li>
-      <li><%= link_to 'Items', items_path %></li>
+      <li><%= link_to "My Info", customer_path(current_user.customer), class: "hoverable" %></li>
+      <li><%= link_to 'Addresses', addresses_path, class: "hoverable" %></li>
+      <li><%= link_to 'Orders', orders_path, class: "hoverable" %></li>
+      <li><%= link_to 'Items', items_path, class: "hoverable" %></li>
     </ul>
     <ul class="right">
-      <li><%= link_to 'View Cart', cart_path %></li>
+      <li><%= link_to 'View Cart', cart_path, class: "hoverable" %></li>
 
-      <li><%= link_to 'Logout', logout_path %></li>
+      <li><%= link_to 'Logout', logout_path, class: "hoverable" %></li>
     </ul>
   </div>
 </nav>

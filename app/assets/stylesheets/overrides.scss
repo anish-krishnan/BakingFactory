@@ -1,9 +1,14 @@
-html {
-  // Preloaded with four fonts; uncomment the one you prefer
-  font-family: 'Nunito', sans-serif;
-  // font-family: 'Bitter', serif;
-  // font-family: 'Josefin Sans', sans-serif;
-  // font-family: 'Varela Round', sans-serif;
+// html {
+//   // Preloaded with four fonts; uncomment the one you prefer
+//   font-family: 'Nunito', sans-serif;
+//   // font-family: 'Bitter', serif;
+//   // font-family: 'Josefin Sans', sans-serif;
+//   // font-family: 'Varela Round', sans-serif;
+// }
+
+html{
+  min-height: 100%;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 body {
@@ -25,21 +30,44 @@ main {
 }
 
 /********** TOPBAR & NAV ********/
+// #topbar {
+//   background-color: #8B5C10;
+//   padding-top: 5px;
+//   margin-bottom: 0px;
+//   color: #ffd600;
+// }
+
+// #nav {
+//   background-color: #8B5C10;
+//   height: 50px;
+// }
+
+// #nav ul a {
+//   color: #ffd600;
+//   font-size: 1.2rem;
+// }
+
 #topbar {
-  background-color: #8B5C10;
+  background-color: #536dfe;
   padding-top: 5px;
   margin-bottom: 0px;
-  color: #ffd600;
+  color: white;
+
 }
 
 #nav {
-  background-color: #8B5C10;
-  height: 50px;
+background-color: #536dfe;
+// height: 50px;
+}
+
+.dropdown-content{
+  background-color: #536dfe;
+
 }
 
 #nav ul a {
-  color: #ffd600;
-  font-size: 1.2rem;
+color: white;
+font-size: 1.2rem;
 }
 
 /********** FLASH MSGS ********/
@@ -62,17 +90,37 @@ main {
 
 /********** FOOTER ********/
 
-#footer {
-  background-color: #8B5C10;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-bottom: 0px;
-  color: #d6b50f;
-  line-height: 2rem;
-}
+// #footer {
+//   background-color: #8B5C10;
+//   padding-top: 10px;
+//   padding-bottom: 10px;
+//   margin-bottom: 0px;
+//   color: #d6b50f;
+//   line-height: 2rem;
+// }
 
-#footer a {
-  color: #ffd600;
+// #footer a {
+//   color: #ffd600;
+// }
+#footer{
+  background-color: #536dfe;
+  padding-top: 20px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: -20px;
+
+  .links{
+      font-weight: bold;
+  }
+
+  #footer_bottom{
+      background: #8f9bff;
+  }
+}
+.mail_to{
+  color: white;
+  font-weight: bold;
 }
 
 /********** TABLES ********/
@@ -137,6 +185,12 @@ th.align_center {
   background-color: #e53935;
   color: #fff;
 }
+
+.dropdown-content{
+  width: max-content !important;
+  height:auto !important;
+}
+
 
 /********** FORMS ********/
 .switch label input[type=checkbox]:checked + .lever {

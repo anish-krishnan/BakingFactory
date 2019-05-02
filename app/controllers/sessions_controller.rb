@@ -11,7 +11,11 @@ class SessionsController < ApplicationController
 
         create_cart
 
-        redirect_to home_path, notice: "Logged in!"
+        if(user.role?(:admin))
+          redirect_to dash_path, notice: "Logged in!"
+        else
+          redirect_to home_path, notice: "Logged in!"
+        end
       else
         flash.now.alert = "Username and/or password is invalid"
         render "new"

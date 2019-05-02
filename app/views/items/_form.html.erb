@@ -1,4 +1,4 @@
-<%= simple_form_for @item, html: { class: 'form-horizontal' } do |f| %>
+<%= simple_form_for @item, html: { class: 'form-horizontal' }, input_html: {multipart: true} do |f| %>
   <fieldset>
     <legend><%= controller.action_name.capitalize %> Customer</legend>
 
@@ -9,7 +9,6 @@
     <%= f.input :units_per_item, input_html: {class: "avg"} %>
     <%= f.input :weight, input_html: {class: "avg"} %>
     <%= f.input :active %>
-    
 
 
     <div class="form-actions">

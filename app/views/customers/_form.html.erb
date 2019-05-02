@@ -1,6 +1,8 @@
 <%= simple_form_for @customer, html: { class: 'form-horizontal' } do |f| %>
   <fieldset>
     <legend><%= controller.action_name.capitalize %> Customer</legend>
+    <li><% @customer.errors.full_messages %></li>
+    <li><% @user.errors.full_messages %></li>
 
     <%= f.input :first_name, input_html: {class: "avg"} %>
     <%= f.input :last_name, input_html: {class: "avg"} %>

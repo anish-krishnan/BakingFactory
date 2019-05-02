@@ -67,6 +67,8 @@ class Ability
             can :show, Order
             can :show, Address
 
+            can :toggleshipped, OrderItem
+
         else
             can :show, Item
             can :index, Item

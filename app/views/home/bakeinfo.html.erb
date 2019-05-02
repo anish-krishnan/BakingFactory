@@ -1,0 +1,65 @@
+<h4>Baking List </h4>
+
+<br /><br />
+
+<h5>Bread</h5>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="300">Item</th>
+      <th width="180">Picture</th>
+      <th width="100">Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bread.each do |id, q| %>
+      <tr>
+        <td align="center"><%= link_to Item.find(id).name, item_path(Item.find(id)) %></td>
+        <td><img src=<%= Item.find(id).picture %> style="width: 180px; height: 150px"></td>
+        <td align="center"><%= q %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h5>Muffins</h5>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="300">Item</th>
+      <th width="180">Picture</th>
+      <th width="100">Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @muffins.each do |id, q| %>
+      <tr>
+        <td align="center"><%= link_to Item.find(id).name, item_path(Item.find(id)) %></td>
+        <td><img src=<%= Item.find(id).picture %> style="width: 180px; height: 150px"></td>
+        <td align="center"><%= q %></td>
+      </tr>
+
+    <% end %>
+  </tbody>
+</table>
+
+<h5>Pastries</h5>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="300">Item</th>
+      <th width="180">Picture</th>
+      <th width="100">Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pastries.each do |id, q| %>
+      <tr>
+        <td align="center"><%= link_to Item.find(id).name, item_path(Item.find(id)) %></td>
+        <td><img src=<%= Item.find(id).picture %> style="width: 180px; height: 150px"></td>
+        <td align="center"><%= q %></td>
+      </tr>
+
+    <% end %>
+  </tbody>
+</table>

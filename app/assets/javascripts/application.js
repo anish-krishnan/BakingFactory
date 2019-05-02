@@ -19,6 +19,18 @@
 // @import "materialize";
 // @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
+$( document ).ready(function(){
+  function submitForm() {
+    document.getElementById("search").submit();
+  }
+  document.onkeydown = function () {
+    if (window.event.keyCode == '13') {
+        submitForm();
+    }
+  }
+  $(".dropdown-trigger").dropdown();
+}); 
+  
 
 // Flash fade
 $(function() {
@@ -26,3 +38,16 @@ $(function() {
      $(this).delay(3700).fadeOut();
   });
 });
+
+$('.count').each(function () {
+  $(this).prop('Counter',0).animate({
+      Counter: $(this).text()
+  }, {
+      duration: 1700,
+      easing: 'easeOutCubic',
+      step: function (now) {
+          $(this).text(Math.ceil(now));
+      }
+  });
+});
+

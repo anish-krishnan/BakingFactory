@@ -2,4 +2,6 @@
     <%= f.input :last_name, input_html: {class: "avg"} %>
     <%= f.input :phone, input_html: {class: "avg"} %>
     <%= f.input :email, input_html: {class: "avg"} %>
+    <% if logged_in? %>
     <%= f.input :active %>
+    <% end %>

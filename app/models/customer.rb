@@ -18,6 +18,9 @@ class Customer < ApplicationRecord
   # Scopes
   scope :alphabetical,  -> { order(:last_name).order(:first_name) }
 
+  scope :search, ->(term) { where('first_name LIKE ? OR last_name LIKE ?', "#{term}%", "#{term}%") }
+
+
   # Validations
   validates_presence_of :last_name, :first_name
   validates_format_of :phone, with: /\A(\d{10}|\(?\d{3}\)?[-. ]\d{3}[-.]\d{4})\z/, message: "should be 10 digits (area code needed) and delimited with dashes only"

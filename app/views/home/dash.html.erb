@@ -1,0 +1,114 @@
+<center><h4>Total Revenue: $<span class="count"><%= @totalEarnings.to_i %></span></h4></center>
+
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+
+
+
+<div id="container"></div>
+<div id="container-graph"></div>
+
+<h5>Top Items</h5>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="300">Item Name</th>
+      <th width="180">Number of Items Sold</th>
+      <th width="200">Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @topItems.each do |id,q| %>
+      <tr>
+        <td align="center"><%= Item.find(id).name %></td>
+        <td align="center"><%= q %></td>
+        <td><img src=<%= Item.find(id).picture %> style="width: 200px; height: 180px"></td>
+      </tr>
+
+    <% end %>
+  </tbody>
+</table>
+
+<hr><br /><br />
+
+<h5>Top Customers</h5>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="300">Customer Name</th>
+      <th width="180">Number of Orders</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @topCustomers.each do |customer| %>
+      <tr>
+        <td align="center"><%= link_to customer.proper_name, customer_path(customer.id) %></td>
+        <td align="center"><%= customer.orders.size %></td>
+      </tr>
+
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<script>
+Highcharts.chart('container', {
+    chart: {
+        type: 'spline'
+    },
+    title: {
+        text: 'Revenue from the beginning of time'
+    },
+    subtitle: {
+        text: ''
+    },
+    xAxis: {
+        type: 'datetime',
+        dateTimeLabelFormats: { // don't display the dummy year
+            month: '%B %Y.'
+        },
+        title: {
+            text: 'Date'
+        }
+    },
+    yAxis: {
+        title: {
+            text: 'Revenue'
+        },
+        min: 0
+    },
+    tooltip: {
+        headerFormat: '<b>{series.name}</b><br>',
+        pointFormat: '{point.x:%B %Y.}: ${point.y:.2f}'
+    },
+
+    plotOptions: {
+        spline: {
+            marker: {
+                enabled: true
+            }
+        },
+        series: {
+            animation: {
+                duration: 1700
+            }
+        }
+    },
+
+
+    colors: ['#6CF', '#39F', '#06C', '#036', '#000'],
+
+    // Define the data points. All series have a dummy year
+    // of 1970/71 in order to be compared on the same x axis. Note
+    // that in JavaScript, months start at 0 for January, 1 for February etc.
+    series: [{
+        name: "Revenue",
+        data: <%= @data %>
+    },]
+});
+</script>

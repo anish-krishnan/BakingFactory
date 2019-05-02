@@ -1,0 +1,58 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<h4>Shipping List</h4>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="100">Order Address</th>
+      <th width="100">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |o| %>
+      <tr>
+        <td align="center"><%= render :partial => "partials/address_info", locals: {address: o.address} %></td>
+        <td align="center"><%= link_to o.date, order_path(o.id) %></td>
+      </tr>
+      <tr>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th width="100">Item Name</th>
+              <th width="100">Quantity</th>
+              <th width="100">Unit Price</th>
+              <th width="100">Subtotal</th>
+            </tr>
+          </thead> 
+
+
+          <tbody>
+            <% o.order_items.each do |oi| %>
+              <tr>
+                <td><%= link_to oi.item.name, item_path(oi.item) %></td>
+                <td align="center"><%= oi.quantity %></td>
+                <td align="center"><%= number_to_currency oi.item.price_on_date(oi.order.date) %></td>
+                <td align="right"><%= number_to_currency oi.subtotal(oi.order.date) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td>
+                  <% if oi.shipped_on.nil? %>
+                    <%= link_to 'check_box_outline_blank', toggle_shipped_path(oi.id), class: 'material-icons', method: 'get' %>
+
+                    <%# link_to(image_tag('check_black.png', style: 'height:50px;width:50px;'), toggle_shipped_path(oi.id), method: 'get') %>
+                  <% else %>
+                    <%= link_to 'check_box', toggle_shipped_path(oi.id), class: 'material-icons', method: 'get' %>
+                    <%# link_to(image_tag('check_green.png', style: 'height:50px;width:50px;'), toggle_shipped_path(oi.id), method: 'get') %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+
+        </table>
+
+      </tr>
+      <br /><br />
+      <hr>
+    <% end %>
+  </tbody>
+</table>

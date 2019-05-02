@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="small-7 columns">
+    <%= render partial: "user_details" %>
+  </div>
+</div>
+
+<!-- Add buttons to list all, edit project or destroy object -->
+<%= render partial: "partials/object_options", locals: {model_name: "user", object: @user}  %>
+<br>
+<% if can? :destroy, :user %>
+  <% if @user.active %>
+    <%= link_to(eval("deactivate_User_path(#{@user.id})"), class: 'waves-effect waves-light btn btn-alert') do %>
+      &nbsp;<%= "Deactivate" %>
+    <% end %>
+  <% else %>
+    <%= link_to(eval("activate_User_path(#{@user.id})"), class: 'waves-effect waves-light btn btn-alert') do %>
+      &nbsp;<%= "Activate" %>
+    <% end %>
+  <% end %>
+<% end %>

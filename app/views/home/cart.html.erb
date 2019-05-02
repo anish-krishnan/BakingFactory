@@ -9,7 +9,7 @@
         <th width="125">Current Price</th>
         <th width="125">Quantity</th>
         <th width="200">Picture</th>
-        <th width="200">Delete</th>
+        <th width="100"><center></center></th>
       </tr>
     </thead>
     <tbody>
@@ -19,9 +19,7 @@
           <td><%= oitem.item.current_price %></td>
           <td><%= oitem.quantity  %></td>
           <td><img src=<%= oitem.item.picture %> style="width: 200px; height: 180px"></td>
-          <td><%= link_to(eval("deleteFromCart_Item_path(#{oitem.item.id})"), class: 'waves-effect waves-light btn') do %>
-    &nbsp;<%= "X" %><td>
-<% end %>
+          <td><center><%= link_to 'clear', deleteFromCart_Item_path(oitem.item.id), class: 'material-icons', method: 'get' %></center></td>
         </tr>
       <% end %>
     </tbody>
@@ -33,7 +31,13 @@
     <!-- <i class="fa fa-plus"></i> -->
     &nbsp;Checkout
 
-  <% end %>
+    <% end %>
+    <br /><br /><br />
+    <%= link_to(eval("cartReset_path"), class: "button radius") do %>
+    <!-- <i class="fa fa-plus"></i> -->
+    &nbsp;Clear Cart
+
+    <% end %>
 <% end %>
 
 <p>&nbsp;</p>

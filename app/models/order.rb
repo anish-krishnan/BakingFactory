@@ -22,6 +22,7 @@ class Order < ApplicationRecord
   scope :chronological, -> { order(date: :desc) }
   scope :paid,          -> { where.not(payment_receipt: nil) }
   scope :for_customer,  ->(customer_id) { where(customer_id: customer_id) }
+  scope :in_range,      ->(startDate, endDate) { where("date >= ? AND date < ?", startDate, endDate) }
 
   # Class methods
   def self.not_shipped
@@ -34,6 +35,7 @@ class Order < ApplicationRecord
   def unshipped_items
     self.order_items.unshipped
   end
+
 
   # Validations
   # validates_date :date

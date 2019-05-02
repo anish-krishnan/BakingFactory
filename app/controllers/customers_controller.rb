@@ -29,19 +29,40 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
     @user = User.new(user_params)
     @user.role = "customer"
+    
+
+    if !logged_in?
+      @customer.active = true
+    end
+
     @user.active = @customer.active
-    if !@user.save!
-      @customer.valid?
-      render action: 'new'
+
+    puts "CUSTOMER 1"
+    puts user_params
+    puts @user
+
+
+    if !@user.save
+      # @customer.valid?
+      puts "CUSTOMER FAILED"
+      setUserErrors(@user)
+      # render action: 'new', notice: "#{@user.errors.full_messages} asdjflkajdsflkafsj"
+      redirect_to new_customer_path, notice: "#{@user.errors.full_messages}"
+
     else
+      puts "CUSTOMER 2"
       @customer.user_id = @user.id
       if @customer.save!
+        puts "CUSTOMER 3"
         if !logged_in?
+          puts "CUSTOMER 4"
           redirect_to home_path, notice: "#{@customer.proper_name} was added to the system. Try logging in!"
         else
+          puts "CUSTOMER 5"
           redirect_to @customer, notice: "#{@customer.proper_name} was added to the system."
         end
       else
+        puts "CUSTOMER 6"
         render action: 'new'
       end
     end
@@ -70,8 +91,12 @@ class CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
   end
 
+  def setUserErrors(user)
+    @user_with_errors = user
+  end
+
   def customer_params
-    params.require(:customer).permit(:first_name, :last_name, :email, :phone, :active, :username, :password, :password_confirmation)
+    params.require(:customer).permit(:first_name, :last_name, :email, :phone, :username, :password, :password_confirmation)
   end
 
   def user_params      

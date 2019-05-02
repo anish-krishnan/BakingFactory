@@ -12,6 +12,11 @@
   <b>Recipient</b>: <%= link_to @order.address.recipient, address_path(@order.address) %>
 </p>
 
+
+<p>
+  <b>Address</b>: <%= render :partial => "partials/address_info", locals: {address: @order.address} %>
+</p>
+
 <p>
   <b>Total Cost</b>: <%= number_to_currency @order.grand_total %>
 </p>

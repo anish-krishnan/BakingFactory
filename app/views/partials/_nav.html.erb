@@ -1,15 +1,42 @@
+<!-- Dropdown Structure -->
+<ul id="dropdown2" class="dropdown-content">
+  <li><%= link_to 'Users', users_path, class: "hoverable" %></li>
+  <li class="divider"></li>
+  <li><%= link_to 'Customers', customers_path, class: "hoverable" %></li>
+  <li class="divider"></li>
+  <li><%= link_to 'Addresses', addresses_path, class: "hoverable" %></li>
+  <li class="divider"></li>
+  <li><%= link_to 'Orders', orders_path, class: "hoverable" %></li>
+  <li class="divider"></li>
+  <li><%= link_to 'Items', items_path, class: "hoverable" %></li>
+</ul>
+
+<ul id="dropdown1" class="dropdown-content">
+  <li><%= link_to 'Ship List', shipinfo_path %></li>
+  <li class="divider"></li>
+  <li><%= link_to 'Bake List', bakeinfo_path %></li>
+</ul>
+
+
 <nav id="nav">
   <div class="container">
-    <ul class="left hide-on-med-and-down">
-      <li><%= link_to 'Users', users_path %></li>
-      <li><%= link_to 'Customers', customers_path %></li>
-      <li><%= link_to 'Addresses', addresses_path %></li>
-      <li><%= link_to 'Orders', orders_path %></li>
-      <li><%= link_to 'Items', items_path %></li>
-    </ul>
-    <ul class="right">
-      <li><%= link_to 'View Cart', cart_path %></li>
-      <li><%= link_to 'Logout', logout_path %></li>
-    </ul>
+    <div class="nav-wrapper">
+      <ul class="left hide-on-med-and-down">
+        <li>
+        <%= link_to dash_path do %>
+  Dashboard <i class="material-icons right">insert_chart</i>
+<% end %>
+</li>
+        <li><a class="dropdown-button" data-beloworigin="true" data-hover="true" href="#!" data-activates="dropdown2">Manage<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a class="dropdown-button" data-beloworigin="true" data-hover="true" href="#!" data-activates="dropdown1">Lists<i class="material-icons right">arrow_drop_down</i></a></li>
+
+
+      </ul>
+
+      <ul class="right">
+        <li><%= link_to 'View Cart', cart_path, class: "hoverable" %></li>
+        <li><%= link_to 'Logout', logout_path, class: "hoverable" %></li>
+      </ul>
+    </div>
   </div>
 </nav>

@@ -1,0 +1,13 @@
+<h3><%= @user.username %></h3>
+
+<p>
+  <b>Role</b>: <%= @user.role %>
+</p>
+
+<p>
+  <b>Active</b>: <%= @user.active ? 'Yes' : 'No' %>
+</p>
+
+<p>
+  <em>A Baking Factory user since <%= @user.created_at.year %>.</em>
+</p>

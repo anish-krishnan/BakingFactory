@@ -1,3 +1,41 @@
 
 	<%= render :partial => 'general_home' %>
 
+	<% if logged_in? && current_user.role?(:customer) %>
+		
+		<h5>Suggested Item</h5>
+		<div class="col s12">
+							<% if @suggestedItem.picture_url.nil? %>
+								<%= link_to(image_tag('no-image.png', size: "200x180"), item_path(item)) %>
+							<% else %>
+								<%= link_to(image_tag(@suggestedItem.picture, size: "200x180"), item_path(@suggestedItem)) %>
+							<% end %><br />
+							<%= link_to @suggestedItem.name, item_path(@suggestedItem) %>
+							<br />
+							<%= link_to 'add_shopping_cart', addToCart_Item_path(@suggestedItem.id), class: 'material-icons', method: 'get' %>
+						<br /><br />
+		</div>
+		
+		<hr>
+					
+		<% if @prevItems.nil? %>
+		<% else %>
+			<h5>You recently purchased...</h5>
+				<div class="row">
+					<% @prevItems.each do |item| %>
+						<div class="col s3"><center>
+							<% if item.picture_url.nil? %>
+								<%= link_to(image_tag('no-image.png', size: "200x180"), item_path(item)) %>
+							<% else %>
+								<%= link_to(image_tag(item.picture, size: "200x180"), item_path(item)) %>
+							<% end %>
+							<center><%= link_to item.name, item_path(item) %></center>
+							<%= link_to 'add_shopping_cart', addToCart_Item_path(item.id), class: 'material-icons', method: 'get' %>
+
+							<br /><br /><br />
+						</center></div>
+					<% end %>
+				</div>  
+		<% end %>
+	<% end %>
+

@@ -1,21 +1,46 @@
-<h2>Welcome To A &amp; M Bread Express</h2>
+<h3><center>Welcome to the Baking Factory!</center></h3>
 <br />
-<div class="row">
-	<div class="small-7 columns">
-		<p>
-			Bread Express is the smallest, but absolutely best, online bakery 
-			we know of.  You should order lots of our products now.  They are
-			delicious, nutritious and amazing in every way.  Why are you still 
-			reading this?  You should be ordering bread right now.  Stop reading 
-			and start ordering.  (Still reading? What are you waiting for?)
-		</p>
-	</div>
-	<div class="small-1 columns">
-		&nbsp;
-	</div>
-	<div class="small-4 columns">
-		&nbsp;
-	</div>
-</div>
+    <div class="card">
+      <div class="card-content">
+        <p>
+          The Baking Factory is your go-to store to satisfy your
+          bakery needs the right way. Our store offers a wide variety
+          of delicious goodies including muffins and pastries. We will
+          even ship them to you within a day! 
+        </p>
+        <br>
+        <p>
+          Don't wait to make your order. Do it right away!
+        </p>
+      </div>
+    </div>
+
+
+    <div class="row">
+
+      <div class="col s3">
+        <center><%= link_to(image_tag('cinnamon.jpg', size: "220x220"), home_path) %></center>
+      </div>
+      <div class="col s3">
+        <center><%= link_to(image_tag('muffin.jpg', size: "220x220"), home_path) %></center>
+      </div>
+      <div class="col s3">
+        <center><%= link_to(image_tag('sourdough.jpg', size: "220x220"), home_path) %></center>
+      </div>
+      <div class="col s3">
+        <center><%= link_to(image_tag('wheat.jpg', size: "220x220"), home_path) %></center>
+      </div>
+  	</div>
+
+		<br />
+
+		<div class="row">
+			<div class="col s12">
+        <center><h5><%= link_to 'View Items', items_path %></h5></center>
+
+      </div>
+		</div>
+
+
 
 

@@ -1,13 +1,31 @@
+<%= render :partial => "partials/title_with_search", locals: {title: "Items in Baking Factory"} %>
+
 <% if @breads.empty? %>
   <h4>No active breads at this time</h4>
 <% else %>
-  <h4>Breads</h4>
+  <h5>Breads</h5>
     <div class="row">
       <% @breads.each do |item| %>
         <div class="col s3"><center>
-          <img src=<%= item.picture %> style="width: 200px; height: 180px">
-          <%= link_to item.name, item_path(item) %><br />
+          <% if item.picture_url.nil? %>
+            <%= link_to(image_tag('no-image.png', size: "200x180"), item_path(item)) %>
+          <% else %>
+            <%= link_to(image_tag(item.picture, size: "200x180"), item_path(item)) %>
+          <% end %>
+          <center><%= link_to item.name, item_path(item) %></center>
           $<%= item.current_price %>
+
+          <% if can? :destroy, :item %>
+            <% if item.active %>
+              <%= link_to(eval("deactivate_Item_path(#{item.id})"), class: 'waves-effect waves-light btn btn-alert') do %>
+                &nbsp;<%= "Deactivate" %>
+              <% end %>
+            <% else %>
+              <%= link_to(eval("activate_Item_path(#{item.id})"), class: 'waves-effect waves-light btn btn-alert') do %>
+                &nbsp;<%= "Activate" %>
+              <% end %>
+            <% end %>
+          <% end %>
 
           <br /><br /><br />
         </center></div>
@@ -18,13 +36,29 @@
 <% if @muffins.empty? %>
   <h4>No active muffins at this time</h4>
 <% else %>
-  <h4>Muffins</h4>
+  <h5>Muffins</h5>
     <div class="row">
       <% @muffins.each do |item| %>
         <div class="col s3"><center>
-          <img src=<%= item.picture %> style="width: 200px; height: 180px">
-          <%= link_to item.name, item_path(item) %><br />
+          <% if item.picture_url.nil? %>
+            <%= link_to(image_tag('no-image.png', size: "200x180"), item_path(item)) %>
+          <% else %>
+            <%= link_to(image_tag(item.picture, size: "200x180"), item_path(item)) %>
+          <% end %>
+          <center><%= link_to item.name, item_path(item) %></center>
           $<%= item.current_price %>
+
+          <% if can? :destroy, :item %>
+            <% if item.active %>
+              <%= link_to(eval("deactivate_Item_path(#{item.id})"), class: 'waves-effect waves-light btn btn-alert') do %>
+                &nbsp;<%= "Deactivate" %>
+              <% end %>
+            <% else %>
+              <%= link_to(eval("activate_Item_path(#{item.id})"), class: 'waves-effect waves-light btn btn-alert') do %>
+                &nbsp;<%= "Activate" %>
+              <% end %>
+            <% end %>
+          <% end %>
 
           <br /><br /><br />
         </center></div>
@@ -35,13 +69,30 @@
 <% if @pastries.empty? %>
   <h4>No active pastries at this time</h4>
 <% else %>
-  <h4>Pastries</h4>
+  <h5>Pastries</h5>
     <div class="row">
       <% @pastries.each do |item| %>
         <div class="col s3"><center>
-          <img src=<%= item.picture %> style="width: 200px; height: 180px">
-          <%= link_to item.name, item_path(item) %><br />
+           <% if item.picture_url.nil? %>
+            <%= link_to(image_tag('no-image.png', size: "200x180"), item_path(item)) %>
+          <% else %>
+            <%= link_to(image_tag(item.picture, size: "200x180"), item_path(item)) %>
+          <% end %>
+          <center><%= link_to item.name, item_path(item) %></center>
           $<%= item.current_price %>
+
+
+          <% if can? :destroy, :item %>
+            <% if item.active %>
+              <%= link_to(eval("deactivate_Item_path(#{item.id})"), class: 'waves-effect waves-light btn btn-alert') do %>
+                &nbsp;<%= "Deactivate" %>
+              <% end %>
+            <% else %>
+              <%= link_to(eval("activate_Item_path(#{item.id})"), class: 'waves-effect waves-light btn btn-alert') do %>
+                &nbsp;<%= "Activate" %>
+              <% end %>
+            <% end %>
+          <% end %>
 
           <br /><br /><br />
         </center></div>
@@ -50,6 +101,41 @@
 <% end %>
 
 
+<% if logged_in? && current_user.role?(:admin) %>
+
+  <% if (@inactive_items.empty?) %>
+    <h5>No inactive items</h5>
+  <% else %>
+    <h5>Inactive Items</h5>
+      <div class="row">
+        <% @inactive_items.each do |item| %>
+          <div class="col s3"><center>
+            <% if item.picture_url.nil? %>
+              <%= link_to(image_tag('no-image.png', size: "200x180"), item_path(item)) %>
+            <% else %>
+              <%= link_to(image_tag(item.picture, size: "200x180"), item_path(item)) %>
+            <% end %>
+            <center><%= link_to item.name, item_path(item) %></center>
+            $<%= item.current_price %>
+
+            <% if can? :destroy, :item %>
+              <% if item.active %>
+                <%= link_to(eval("deactivate_Item_path(#{item.id})"), class: 'waves-effect waves-light btn btn-alert') do %>
+                  &nbsp;<%= "Deactivate" %>
+                <% end %>
+              <% else %>
+                <%= link_to(eval("activate_Item_path(#{item.id})"), class: 'waves-effect waves-light btn btn-alert') do %>
+                  &nbsp;<%= "Activate" %>
+                <% end %>
+              <% end %>
+            <% end %>
+
+            <br /><br /><br />
+          </center></div>
+        <% end %>
+      </div>   
+  <% end %>
+<% end %>
 
 
 <p>&nbsp;</p>

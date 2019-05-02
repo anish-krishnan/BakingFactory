@@ -22,6 +22,16 @@ class OrderItem < ApplicationRecord
     self.item.price_on_date(date) * self.quantity
   end
 
+  def toggle_shipping
+    if(self.shipped_on.nil?)
+      self.shipped_on = Date.today
+      self.save!
+    else
+      self.shipped_on = nil
+      self.save!
+    end
+  end
+
   private
   def item_is_active_in_system
     is_active_in_system(:item)

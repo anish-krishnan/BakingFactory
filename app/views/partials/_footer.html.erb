@@ -1,5 +1,6 @@
 <p class="supertiny">&nbsp;</p>
 
+<!--
 <div id="footer" class="center-align">
   
   <%= link_to 'Home', home_path %>&nbsp;&nbsp;::&nbsp;&nbsp;
@@ -13,3 +14,30 @@
   </div>
 
 </div>
+-->
+
+<footer class="page-footer", id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col s3">
+        <center><%= link_to 'Home', home_path, {:style=>'color:#FFFFFF;', :class=>"hoverable"} %></center>
+      </div>
+      <div class="col s3">
+        <center><%= link_to 'About Baking Factory', about_path, {:style=>'color:#FFFFFF;', :class=>"hoverable"} %></center>
+      </div>
+      <div class="col s3">
+        <center><%= link_to 'Contact Us', contact_path, {:style=>'color:#FFFFFF;', :class=>"hoverable"} %></center>
+      </div>
+      <div class="col s3">
+        <center><%= link_to 'Privacy Policy', privacy_path, {:style=>'color:#FFFFFF;', :class=>"hoverable"} %></center>
+      </div>
+    </div>
+  </div>
+  <div class="row", id="footer_bottom">
+    <div class="footer-copyright">
+      <div class="container">
+      <center>Webmaster: <%= mail_to("anishkrishnan@cmu.edu", "Anish Krishnan", encode: "javascript", class: "mail_to hoverable") %> &copy 2019</center>
+      </div>
+    </div>
+  </div>
+</footer>

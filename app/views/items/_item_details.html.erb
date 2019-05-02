@@ -24,7 +24,9 @@
   <b>Description</b>: <%= @item.description %>
 </p>
 
-<img src=<%= @item.picture %> style="width:400px">
+<% unless @item.picture_url.nil? %>
+  <img src=<%= @item.picture %> style="width:400px">
+<% end %>
 
 <p>
   <em>A Baking Factory item since <%= @item.created_at.year %>.</em>
@@ -42,30 +44,25 @@
     &nbsp;<%= "Add To Cart" %>
 <% end %>
 
-<h4>Customers also love...</h4>
 
-
-<% if @similar_items.empty? %>
-  <h4>Nothing at the moment.</h4>
+<% if @similar_items.select{|s| s.id != @item.id}.empty? %>
 <% else %>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th width="225">Name</th>
-        <th width="125">Price</th>
-        <th width="200">Units</th>
-        <th width="200">Picture</th>
-      </tr>
-    </thead>
-    <tbody>
+  <br /><br />
+  <h4>Customers also love...</h4>
+  <hr><br />
+    <div class="row">
       <% @similar_items.select{|s| s.id != @item.id}.each do |item| %>
-        <tr>
-          <td><%= link_to item.name, item_path(item) %></td>
-          <td><%= item.current_price %></td>
-          <td><%= item.units_per_item  %></td>
-          <td><img src=<%= item.picture %> style="width: 200px; height: 180px"></td>
-        </tr>
+        <div class="col s4"><center>
+          <% if item.picture_url.nil? %>
+            <%= link_to(image_tag('no-image.png', size: "200x180"), item_path(item)) %>
+          <% else %>
+            <%= link_to(image_tag(item.picture, size: "200x180"), item_path(item)) %>
+          <% end %>
+          <center><%= link_to item.name, item_path(item) %></center><br />
+          $<%= item.current_price %>
+
+          <br /><br /><br />
+        </center></div>
       <% end %>
-    </tbody>
-  </table>
+    </div>   
 <% end %>

@@ -10,7 +10,7 @@
         <% for price in @previous_prices %>
           <tr>
             <td><%= price.start_date.strftime("%b %d, %Y") %></td>
-            <td class="align_right"><%= number_to_currency(price.price/100.0) %></td>
+            <td class="align_right"><%= number_to_currency(price.price) %></td>
           </tr>
         <% end %>
     </table>

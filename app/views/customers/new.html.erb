@@ -2,8 +2,11 @@
                                                         type_of_form: "New Customer",
                                                         fields: "fields"} %>
 
+<% if !@user_with_errors.nil? %>
+  <li><% @user_with_errors.errors.full_messages %></li>
+<% end %>
 
-<%= render partial: "partials/form2_structure", locals: {object: @customer, 
+<%= render partial: "partials/form2_structure", locals: {object: @customer,
                                                         type_of_form: "New Customer",
                                                         fields1: "fields",
                                                         section_2: "User Account",

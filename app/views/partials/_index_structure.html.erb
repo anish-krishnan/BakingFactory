@@ -16,7 +16,10 @@
 </div>
 
 <!-- Add a button for new instances of object -->
-<% if can? :create, model_name.capitalize %>
+<% puts("LOOK OUT FOR THIS") %>
+<% puts(model_name.capitalize) %>
+<% puts(can? :create, "Address".constantize) %>
+<% if can? :create, model_name.capitalize.constantize %>
   <%= link_to(eval("new_#{model_name}_path"), class: "button radius") do %>
     <!-- <i class="fa fa-plus"></i> -->
     &nbsp;Add a New <%= model_name.capitalize %>
