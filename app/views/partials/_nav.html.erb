@@ -23,10 +23,10 @@
     <div class="nav-wrapper">
       <ul class="left hide-on-med-and-down">
         <li>
-        <%= link_to dash_path do %>
-  Dashboard <i class="material-icons right">insert_chart</i>
-<% end %>
-</li>
+          <%= link_to dash_path do %>
+            Dashboard <i class="material-icons right">insert_chart</i>
+          <% end %>
+        </li>
         <li><a class="dropdown-button" data-beloworigin="true" data-hover="true" href="#!" data-activates="dropdown2">Manage<i class="material-icons right">arrow_drop_down</i></a></li>
         <li><a class="dropdown-button" data-beloworigin="true" data-hover="true" href="#!" data-activates="dropdown1">Lists<i class="material-icons right">arrow_drop_down</i></a></li>
 
@@ -34,7 +34,11 @@
       </ul>
 
       <ul class="right">
-        <li><%= link_to 'View Cart', cart_path, class: "hoverable" %></li>
+        <li>
+          <%= link_to cart_path do %>
+            View Cart <i class="material-icons right">shopping_cart</i>
+          <% end %>
+        </li>
         <li><%= link_to 'Logout', logout_path, class: "hoverable" %></li>
       </ul>
     </div>

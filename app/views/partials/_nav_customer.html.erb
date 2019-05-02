@@ -7,7 +7,11 @@
       <li><%= link_to 'Items', items_path, class: "hoverable" %></li>
     </ul>
     <ul class="right">
-      <li><%= link_to 'View Cart', cart_path, class: "hoverable" %></li>
+      <li>
+        <%= link_to cart_path do %>
+          View Cart <i class="material-icons right">shopping_cart</i>
+        <% end %>
+      </li>
 
       <li><%= link_to 'Logout', logout_path, class: "hoverable" %></li>
     </ul>
