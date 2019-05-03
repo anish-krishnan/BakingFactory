@@ -28,7 +28,7 @@ class OrderItemsController < ApplicationController
   def toggleshipped
     puts "YESSSS"
     @order_item.toggle_shipping
-    redirect_to shipinfo_path, notice: "#{@order_item.item.name} was marked as shipped."
+    redirect_to shipinfo_path, notice: "#{@order_item.item.name} was toggled as shipped/unshipped."
   end
 
 

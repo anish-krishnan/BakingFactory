@@ -15,7 +15,13 @@
     <% @bread.each do |id, q| %>
       <tr>
         <td align="center"><%= link_to Item.find(id).name, item_path(Item.find(id)) %></td>
-        <td><img src=<%= Item.find(id).picture %> style="width: 180px; height: 150px"></td>
+        <td> 
+          <% if Item.find(id).picture_url.nil? %>
+            <%= link_to(image_tag('no-image.png', size: "180x150"), item_path(Item.find(id))) %>
+          <% else %>
+            <%= link_to(image_tag(Item.find(id).picture, size: "180x150"), item_path(Item.find(id))) %>
+          <% end %>
+        </td>
         <td align="center"><%= q %></td>
       </tr>
     <% end %>
@@ -35,7 +41,13 @@
     <% @muffins.each do |id, q| %>
       <tr>
         <td align="center"><%= link_to Item.find(id).name, item_path(Item.find(id)) %></td>
-        <td><img src=<%= Item.find(id).picture %> style="width: 180px; height: 150px"></td>
+        <td> 
+          <% if Item.find(id).picture_url.nil? %>
+            <%= link_to(image_tag('no-image.png', size: "180x150"), item_path(Item.find(id))) %>
+          <% else %>
+            <%= link_to(image_tag(Item.find(id).picture, size: "180x150"), item_path(Item.find(id))) %>
+          <% end %>
+        </td>
         <td align="center"><%= q %></td>
       </tr>
 
@@ -56,7 +68,13 @@
     <% @pastries.each do |id, q| %>
       <tr>
         <td align="center"><%= link_to Item.find(id).name, item_path(Item.find(id)) %></td>
-        <td><img src=<%= Item.find(id).picture %> style="width: 180px; height: 150px"></td>
+        <td> 
+          <% if Item.find(id).picture_url.nil? %>
+            <%= link_to(image_tag('no-image.png', size: "180x150"), item_path(Item.find(id))) %>
+          <% else %>
+            <%= link_to(image_tag(Item.find(id).picture, size: "180x150"), item_path(Item.find(id))) %>
+          <% end %>
+        </td>
         <td align="center"><%= q %></td>
       </tr>
 

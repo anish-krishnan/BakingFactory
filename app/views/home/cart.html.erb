@@ -18,7 +18,13 @@
           <td><%= link_to oitem.item.name, item_path(oitem.item) %></td>
           <td><%= oitem.item.current_price %></td>
           <td><%= oitem.quantity  %></td>
-          <td><img src=<%= oitem.item.picture %> style="width: 200px; height: 180px"></td>
+          <td> 
+            <% if oitem.item.picture_url.nil? %>
+              <%= link_to(image_tag('no-image.png', size: "180x150"), item_path(oitem.item)) %>
+            <% else %>
+              <%= link_to(image_tag(oitem.item.picture, size: "180x150"), item_path(oitem.item)) %>
+            <% end %>
+          </td>
           <td><center><%= link_to 'clear', deleteFromCart_Item_path(oitem.item.id), class: 'material-icons', method: 'get' %></center></td>
         </tr>
       <% end %>

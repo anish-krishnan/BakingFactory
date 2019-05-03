@@ -1,7 +1,7 @@
 <h3><%= @item.name %></h3>
 
 <p>
-  <b>Current Price</b>: <%= @item.current_price %>
+  <b>Current Price</b>: <%= number_to_currency(@item.current_price) %>
 </p>
 
 <p>
@@ -65,4 +65,17 @@
         </center></div>
       <% end %>
     </div>   
+<% end %>
+
+
+<% if can? :destroy, :item %>
+  <% if @item.active %>
+    <%= link_to(eval("deactivate_Item_path(#{@item.id})"), class: 'waves-effect waves-light btn btn-alert') do %>
+      &nbsp;<%= "Deactivate" %>
+    <% end %>
+  <% else %>
+    <%= link_to(eval("activate_Item_path(#{@item.id})"), class: 'waves-effect waves-light btn btn-alert') do %>
+      &nbsp;<%= "Activate" %>
+    <% end %>
+  <% end %>
 <% end %>

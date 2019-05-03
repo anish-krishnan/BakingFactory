@@ -41,7 +41,7 @@
   end
 
   def addToCart
-    if(@item.current_price.nil?)
+    if(@item.price_on_date(Date.today).nil?)
       redirect_to @item, notice: "OOPS!   #{@item.name} does not have a price. Cannot add to cart"
     else
       add_item_to_cart(@item.id.to_s)

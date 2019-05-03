@@ -13,6 +13,10 @@ class SessionsController < ApplicationController
 
         if(user.role?(:admin))
           redirect_to dash_path, notice: "Logged in!"
+        elsif(user.role?(:shipper))
+          redirect_to shipinfo_path, notice: "Logged in!"
+        elsif(user.role?(:baker))
+          redirect_to bakeinfo_path, notice: "Logged in!"
         else
           redirect_to home_path, notice: "Logged in!"
         end
