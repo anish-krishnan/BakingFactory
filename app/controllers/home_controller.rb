@@ -112,7 +112,7 @@ class HomeController < ApplicationController
     @totalEarnings = Order.paid.inject(0) {|sum, order| sum += order.grand_total}
     @data = [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
 
-    minOrderDate = Order.all.map(&:date).min
+    minOrderDate = Order.all.map(&:date).select{|i| !i.nil?}.min
     curDate = minOrderDate
     @data = []
 
