@@ -156,6 +156,16 @@ module Populator
       # price
       cr1 = FactoryBot.create(:item_price, item: croissants, price: 9.50, start_date: 6.months.ago.to_date)      
       cr1.update_attribute(:start_date, 6.months.ago.to_date)
+
+      cream_puffs = FactoryBot.create(:item, 
+        name: "Cream Puffs", 
+        description: "Our light and airy cream puffs filled with vanilla pudding cream are always a hit with family.", 
+        units_per_item: 4, 
+        category: "pastries", 
+        weight: 1.0)
+      # price
+      crp1 = FactoryBot.create(:item_price, item: cream_puffs, price: 9.50, start_date: 6.months.ago.to_date)      
+      crp1.update_attribute(:start_date, 6.months.ago.to_date)
     end
   end
 end

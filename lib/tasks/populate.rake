@@ -28,7 +28,7 @@ namespace :db do
 
     # Step 3: Create 120 customers and their associated users
     all_customers = create_customers
-    puts "Created 120 customers"
+    puts "Created 121 customers"
 
     # Step 4: for each customer associate some addresses
     create_addresses_for(all_customers)
@@ -37,5 +37,13 @@ namespace :db do
     # Step 5: Create some orders for each customer
     create_orders_for(all_customers)
     puts "Created orders for customers"
+
+    # Step 6: Add some trends in purchasing
+    create_trends_with(all_customers)
+    puts "Added trends in ordering"
+
+    # Step 7: Add an item with no orders
+    create_unordered_item
+    puts "Added an unordered item"
   end
 end

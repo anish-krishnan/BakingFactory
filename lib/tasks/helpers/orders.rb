@@ -9,7 +9,8 @@ module Populator
         puts " -- created orders for #{count} customers" if count%10==0
         c_address_ids = customer.addresses.map(&:id)
         customer_selections = all_items.shuffle
-        [1,1,1,2,2,2,2,3,3,3,3,4,4,5,6,7,9,10,12].sample.times do |i|
+        order_dates = (5.months.ago.to_date..Date.current).to_a.shuffle
+        [1,1,1,2,2,2,2,3,3,3,3,4,4,5,6,7,9,10,12,14,15].sample.times do |i|
           order = Order.new
           order.credit_card_number = '4123456789012'
           order.expiration_year = Date.current.year
@@ -17,11 +18,11 @@ module Populator
           order.customer_id = customer.id
           order.address_id = c_address_ids.sample
           order.save!
-          new_date = (5.months.ago.to_date..2.days.ago.to_date).to_a.sample
+          new_date = order_dates.pop
           order.update_attribute(:date, new_date)
           order.reload
           total = 0
-          [1,1,2,2,2,3,3,4,5].sample.times do |j|
+          [1,1,2,2,2,3,3,4].sample.times do |j|
             this_item = customer_selections.pop
             oi = OrderItem.new
             oi.item_id = this_item.id
@@ -35,7 +36,9 @@ module Populator
           order.update_attribute(:grand_total, total)
           order.pay
           # ship the items
-          order.order_items.each{|oi2| oi2.shipped_on = order.date + 1; oi2.save! }
+          unless order.date == Date.current
+            order.order_items.each{|oi2| oi2.shipped_on = order.date + 1; oi2.save! }
+          end
           # reset the selection options
           customer_selections = all_items.shuffle
         end
