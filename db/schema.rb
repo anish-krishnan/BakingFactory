@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20190427035331) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id"
     t.boolean "is_billing"
