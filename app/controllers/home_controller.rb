@@ -116,12 +116,16 @@ class HomeController < ApplicationController
     curDate = minOrderDate
     @data = []
 
-    while(curDate <= Date.today)
-      monthTotal = Order.in_range(curDate, curDate + 1.month).paid.inject(0) {|sum, order| sum += order.grand_total}
-      @data << [curDate.to_time.to_i, monthTotal]
-      curDate += 1.month
+    if(!curDate.nil?)
+      while(curDate <= Date.today)
+        monthTotal = Order.in_range(curDate, curDate + 1.month).paid.inject(0) {|sum, order| sum += order.grand_total}
+        @data << [curDate.to_time.to_i, monthTotal]
+        curDate += 1.month
+      end
+      @data = @data.map{|x,y| [x*1000, y]}
     end
-    @data = @data.map{|x,y| [x*1000, y]}
+
+    @data = []
 
   end
 

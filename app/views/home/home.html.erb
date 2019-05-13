@@ -2,19 +2,21 @@
 	<%= render :partial => 'general_home' %>
 
 	<% if logged_in? && current_user.role?(:customer) %>
-		
-		<h5>Suggested Item</h5>
-		<div class="col s12">
-							<% if @suggestedItem.picture_url.nil? %>
-								<%= link_to(image_tag('no-image.png', size: "200x180"), item_path(item)) %>
-							<% else %>
-								<%= link_to(image_tag(@suggestedItem.picture, size: "200x180"), item_path(@suggestedItem)) %>
-							<% end %><br />
-							<%= link_to @suggestedItem.name, item_path(@suggestedItem) %>
-							<br />
-							<%= link_to 'add_shopping_cart', addToCart_Item_path(@suggestedItem.id), class: 'material-icons', method: 'get' %>
-						<br /><br />
-		</div>
+		<% if !@suggestedItem.nil? %>
+			<h5>Suggested Item</h5>
+			<div class="col s12">
+
+								<% if @suggestedItem.picture_url.nil? %>
+									<%= link_to(image_tag('no-image.png', size: "200x180"), item_path(item)) %>
+								<% else %>
+									<%= link_to(image_tag(@suggestedItem.picture, size: "200x180"), item_path(@suggestedItem)) %>
+								<% end %><br />
+								<%= link_to @suggestedItem.name, item_path(@suggestedItem) %>
+								<br />
+								<%= link_to 'add_shopping_cart', addToCart_Item_path(@suggestedItem.id), class: 'material-icons', method: 'get' %>
+							<br /><br />
+			</div>
+		<% end %>
 		
 		<hr>
 					

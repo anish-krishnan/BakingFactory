@@ -12,8 +12,11 @@
 
 ActiveRecord::Schema.define(version: 20190427035331) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "addresses", force: :cascade do |t|
-    t.integer "customer_id"
+    t.bigint "customer_id"
     t.boolean "is_billing"
     t.string "recipient"
     t.string "street_1"
@@ -32,7 +35,7 @@ ActiveRecord::Schema.define(version: 20190427035331) do
     t.string "last_name"
     t.string "email"
     t.string "phone"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -40,7 +43,7 @@ ActiveRecord::Schema.define(version: 20190427035331) do
   end
 
   create_table "item_prices", force: :cascade do |t|
-    t.integer "item_id"
+    t.bigint "item_id"
     t.float "price"
     t.date "start_date"
     t.date "end_date"
@@ -62,8 +65,8 @@ ActiveRecord::Schema.define(version: 20190427035331) do
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "item_id"
+    t.bigint "order_id"
+    t.bigint "item_id"
     t.integer "quantity"
     t.date "shipped_on"
     t.datetime "created_at", null: false
@@ -73,8 +76,8 @@ ActiveRecord::Schema.define(version: 20190427035331) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "address_id"
+    t.bigint "customer_id"
+    t.bigint "address_id"
     t.date "date"
     t.float "grand_total"
     t.string "payment_receipt"
@@ -93,4 +96,11 @@ ActiveRecord::Schema.define(version: 20190427035331) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "addresses", "customers"
+  add_foreign_key "customers", "users"
+  add_foreign_key "item_prices", "items"
+  add_foreign_key "order_items", "items"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "orders", "addresses"
+  add_foreign_key "orders", "customers"
 end
