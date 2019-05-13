@@ -11,6 +11,9 @@ gem 'rails', '~> 5.1.6', '>= 5.1.6.1'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 ruby '2.4.3'
+gem 'hirb', '0.7.3'
+gem 'faker', '1.8.7'
+gem 'populator', '1.0.0'
 gem 'factory_bot_rails', '4.8.2'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
